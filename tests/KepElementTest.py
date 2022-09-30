@@ -6,9 +6,9 @@ from KepElements import *
 # Test to ensure that functions are accurate and working corrctly
 
 # State vectors from sun to Mars
-r  = [1.692167431596910e+08,1.332858910440899e+08,-1.363164898702294e+06]
-v  = [-1.398517076752354e+01, 2.115435793447175e+01, 7.868656661555926e-01]
-Mu = 132700000000
+r  = [1.705762706464142e+08,1.331457466962230e+08,-1.393668994909272e+06]
+v  = [-1.398483275256669e+01 ,2.117008216903941e+01,7.867324973063816e-01]
+Mu = 1.327e+11
 
 d     = KepElements(r,v,Mu)
 eccen = d.Eccentricity()
@@ -18,9 +18,9 @@ Raan  = d.RAAN()
 Aop   = d.AOP()
 TrAnm = d.TrueAnmly()
 
-print("Eccentricity:        %.3f" % norm(eccen))
-print("Orbital Inclination: %.3f deg" %inc)
-print("SemiMajor Axis:      %.3f km" %norm(a))
-print("R.A.A.N:             %.3f" %Raan)
-print("Argument of Perigee  %.3f" %Aop)
-print("True Anomaly:        %.3f deg" %TrAnm)
+print("Eccentricity:         %.3f" % norm(eccen))
+print("Orbital Inclination:  %.3f deg" %inc)
+print("SemiMajor Axis:       %.3f km" %norm(a))
+print("R.A.A.N:              %.3f" %Raan)
+print("Argument of Peripsis  %.3f" %Aop)
+print("True Anomaly:         %.3f deg" %TrAnm)
