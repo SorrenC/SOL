@@ -47,7 +47,7 @@ class KepElements():
 
     # Semi major axis
     def SemiMjAxis(self):
-        E = (((norm(v))**2)/2) - (self.Mu/norm(r))       # Find total energy of orbit 
+        E = (((norm(self.v))**2)/2) - (self.Mu/norm(self.r))       # Find total energy of orbit 
         a = -(self.Mu/(2*E))                        # Find semi major axis of orbit
         return a
 
@@ -80,32 +80,8 @@ class KepElements():
         f = np.arccos((np.dot(self.r,e)) / (norm(self.r)*norm(e))) * (180/np.pi)          # Find True anamoly (and convert to degrees)
 
         #Need to check for quadrant ambiguity
-        if np.dot(r,v) < 0:
+        if np.dot(self.r,self.v) < 0:
             f = 360 - f;
         else:
             pass  # do nothing, in the right quadrant 
         return f
-
-
-
-# Test to ensure that functions are accurate and working corrctly
-
-# State vectors from sun to Mars
-r  = [1.692167431596910e+08,1.332858910440899e+08,-1.363164898702294e+06]
-v  = [-1.398517076752354e+01, 2.115435793447175e+01, 7.868656661555926e-01]
-Mu = 132700000000
-
-d     = KepElements(r,v,Mu)
-eccen = d.Eccentricity()
-inc   = d.inclination()
-a     = d.SemiMjAxis()
-Raan  = d.RAAN()
-Aop   = d.AOP()
-TrAnm = d.TrueAnmly()
-
-print("Eccentricity:        %.3f" % norm(eccen))
-print("Orbital Inclination: %.3f deg" %inc)
-print("SemiMajor Axis:      %.3f km" %norm(a))
-print("R.A.A.N:             %.3f" %Raan)
-print("Argument of Perigee  %.3f" %Aop)
-print("True Anomaly:        %.3f deg" %TrAnm)
