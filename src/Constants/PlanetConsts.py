@@ -31,7 +31,7 @@ EARTH_MASS     = 5.97224e+24    # [kg]
 EARTH_RADIUS   = 6371           # [km]
 
 # Mars
-MARS_MU        = 1   
+MARS_MU        = 4.305e+4       # [km^3 / s^2]   
 MARS_MASS      = 0.642e+24      # [kg]
 MARS_RADIUS    = (6792)/2       # [km] 
 

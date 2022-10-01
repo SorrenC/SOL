@@ -1,4 +1,5 @@
 # SOL
+![Alt text](logo.png?raw=true "Title")
 
 [![forthebadge made-with-python](https://img.shields.io/badge/Python-v3.8-blue)](https://www.python.org/)
 [![PyPI license](https://img.shields.io/pypi/l/ansicolortags.svg)](https://github.com/SorrenC/easycsv/blob/master/LICENSE)

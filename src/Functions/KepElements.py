@@ -54,7 +54,7 @@ class KepElements():
     # Right Ascension of Ascending Node
     def RAAN(self):
         #N_vector = np.cross([0,0,1],self.h)
-        #W = (np.arccos((N_vector[0])/(norm(N_vector)))) * (180/m.pi)               # Find Right Ascension of Ascending Note, and convert to degrees
+        #W = (np.arccos((N_vector[0])/(norm(N_vector)))) * (180/m.pi)           # Find Right Ascension of Ascending Note, and convert to degrees
         W = (np.arccos(np.dot([1,0,0],(self.n/norm(self.n))))) * (180/m.pi)     # Find Right Ascension of Ascending Note, and convert to degrees
 
         # Need to check for quadrant ambiguity 
