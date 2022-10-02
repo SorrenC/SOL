@@ -51,7 +51,7 @@ class KepElements():
         a = -(self.Mu/(2*E))                        # Find semi major axis of orbit
         return a
 
-    # Right Ascension of Ascending Node
+    # Longitude of Ascending Node a.k.a Right Ascension of Ascending Node
     def RAAN(self):
         #N_vector = np.cross([0,0,1],self.h)
         #W = (np.arccos((N_vector[0])/(norm(N_vector)))) * (180/m.pi)           # Find Right Ascension of Ascending Note, and convert to degrees
@@ -64,14 +64,14 @@ class KepElements():
             pass # do nothing, in the correct quadrant
         return W
 
-    # Argument of Perigee
+    # Argument of Periapsis
     def AOP(self):
         e = ((1.0/self.Mu) * np.cross(self.v,self.h)) - (np.array(self.r)/norm(self.r))   # find eccentricity vector
         w = np.arccos((np.dot(self.n,e)) / (norm(self.n) * norm(e))) * (180/np.pi)        # Find Argument of Perigee (and convert to degrees)
 
         # Need to check for quadrant ambiguity 
         if np.dot([0,0,1],e) < 0:
-            w = 360 - w;
+            w = 360 - w; 
         else: 
             pass # do nothing, in the correct quadrant 
         return w
