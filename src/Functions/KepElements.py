@@ -22,6 +22,7 @@
 import math  as m 
 import numpy as np
 from scipy.linalg import norm 
+import Exceptions
 
 
 ### Class Definition ###
