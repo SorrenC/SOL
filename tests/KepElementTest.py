@@ -1,14 +1,17 @@
 import sys
-sys.path.append("C:/Users/sorre/Desktop/Programs/SOL/src/Functions")
+sys.path += ['C:/Users/sorre/Desktop/Programs/SOL/src/Functions',
+            'C:/Users/sorre/Desktop/Programs/SOL/src/Constants']
 
-from KepElements import *
+from KepElements import KepElements
+from PlanetConsts import SUN_MU
+from scipy.linalg import norm 
 
 # Test to ensure that functions are accurate and working corrctly
 
-# State vectors from Sun body center to the Earth. From JPL's horizon system
-r  =  [1.488800356776601e+08 , 1.699418513335430e+07 ,-1.583093478363939e+03]
-v  =  [-3.872589829328815e+00 , 2.949064770350737e+01 ,-3.733711422633235e-04]
-Mu = 1.327e+11
+# State vectors from Sun body center to Mars 2022-Sep-30 00:00:00 TDB. From JPL's horizon system
+r  =  [1.705762706464142E+08 , 1.331457466962230E+08 ,-1.393668994909272E+06]
+v  =  [-1.398483275256669E+01,2.117008216903941E+01  ,7.867324973063816E-01]
+Mu =  SUN_MU
 
 d     = KepElements(r,v,Mu)
 eccen = d.Eccentricity()

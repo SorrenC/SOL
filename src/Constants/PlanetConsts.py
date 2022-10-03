@@ -15,6 +15,9 @@
 #
 #########################################################################################################
 
+# Sun
+SUN_MU         = 1.327e+11      # [km^3 / s^2]
+
 # Mercury 
 MERCURY_MU     = 1
 MERCURY_MASS   = 0.330e+24      # [kg]
@@ -38,20 +41,20 @@ MARS_RADIUS    = (6792)/2       # [km]
 # Jupiter 
 JUPITER_MU     = 1
 JUPITER_MASS   = 1898e+24       # [kg]
-JUPITER_RADIUS = (142,984)/2    # [km]
+JUPITER_RADIUS = (142984)/2     # [km]
 
 # Saturn 
 SATURN_MU      = 1
 SATURN_MASS    = 568e+24        # [kg]
-SATURN_RADIUS  = (120,536)/2    # [km]
+SATURN_RADIUS  = (120536)/2     # [km]
 
 # Uranus 
 URANUS_MU      = 1
 URANUS_MASS    = 86.8e+24       # [kg]
-URANUS_RADIUS  = (51,118)/2     # [km]
+URANUS_RADIUS  = (51118)/2      # [km]
 
 # Neptune 
 NEPTUNE_MU     = 1
 NEPTUNE_MASS   = 102e+24        # [kg]
-NEPTUNE_RADIUS = (49,528)/2     # [km]
+NEPTUNE_RADIUS = (49528)/2      # [km]
 
