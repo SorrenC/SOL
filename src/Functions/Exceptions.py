@@ -10,13 +10,17 @@
 
 ########################################## Exceptions ###################################################
 #
-# Class to handle custom exceptions
+# Module to handle custom exceptions
 #
 #########################################################################################################
 
 
-# Define Exceptions
+# Define Custom Exceptions
 
 class MAX_ITERATIONS_REACHED(Exception):
     # raised whenever maximum iteration counter is reached
+    pass
+
+class BAD_INPUT(Exception):
+    # Raised whenever a function recieves an incorrect input
     pass

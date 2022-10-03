@@ -11,8 +11,8 @@
 ########################################## LambertsEqn ##################################################
 #
 # Solves lamberts problem given two position measurments and the time of flight between said position 
-# measurments. The program assumes an elliptical orbit
-# The following uses a bi-section method
+# measurments. The program assumes an elliptical orbit. Returns a list
+# This solver uses a bisection algorithm to solve Lamberts equation for semi-major axis
 #
 # INPUTS:
 #   r1        = position 1 in vector or magnitude
@@ -57,8 +57,8 @@ class LambertsSolver():
             theta = np.arccos((np.dot(self.r1,self.r2))/(norm(self.r1) * norm(self.r2))) # angle between two vectors
             c     = np.sqrt(self.r1**2 + self.r2**2 - 2*self.r1*self.r2*np.cos(theta))   # law of cosines
         else:
-            pass # TO DO: ADD EXCEPTIONS FILE AND CUSTOM EXCEPTIONS
-
+            raise BAD_INPUT
+        
         # Find semi-perimeter 
         s = (c + norm(self.r1) + norm(self.r2))/2;
 
@@ -91,9 +91,18 @@ class LambertsSolver():
             if i > self.MaxInt:
                 break
         
+        # Find velocity at positions one and position two 
+        A  = np.sqrt(self.Mu/(4*a[0])) * np.arctan(alpha/2)
+        B  = np.sqrt(self.Mu/(4*a[0])) * np.arctan(beta/2)
 
-        A  = np.sqrt(self.Mu/(4*a)) * np.arctan(alpha/2)
-        B  = np.sqrt(self.Mu/(4*a)) * np.arctan(beta/2)
-        return a; 
+        u1 = (self.r1) / (norm(self.r1))
+        u2 = (self.r2) / (norm(self.r2))
+        uc = (self.r2 - self.r1)/c
+
+        v1 = ((B+A)*uc) + ((B-A)*u1)
+        v2 = ((B+A)*uc) - ((B-A)*u2)
+
+        # return a list of vectors/magnitudes
+        return [a,v1,v2]
 
 
