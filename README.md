@@ -9,5 +9,7 @@
 Sorren's Orbital Library: A Python Orbital Mechanics Library 
 
 ## Dependencies
-* Numpy
-* Scipy
+* Numpy: for math operations 
+    `>pip install numpy`
+* Scipy: for math operations 
+    `>pip install scipy`
