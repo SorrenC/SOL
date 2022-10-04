@@ -15,8 +15,8 @@
 # This solver uses a bisection algorithm to solve Lamberts equation for semi-major axis
 #
 # INPUTS:
-#   r1        = position 1 in vector or magnitude
-#   r2        = position 2 in vector or magnitude 
+#   r1        = position 1 in vector or magnitude. Either python list or numpy array 
+#   r2        = position 2 in vector or magnitude. Either python list or numpy array
 #   t         = time between position vectors
 #   Mu        = central body orbital parameter 
 #   Tolerance = stopping condition for bisection method
@@ -50,6 +50,21 @@ class LambertsSolver():
 
     def solve(self):
         
+        # check if supplied vectors are a list or a numpy array, convert to numpy array if not
+        if isinstance(self.r1, np.ndarray)   == True:
+            pass
+        elif isinstance(self.r1, np.ndarray) == False:
+            self.r1 = np.asarray(self.r1)
+        else:
+            raise BAD_INPUT
+        
+        if isinstance(self.r2, np.ndarray)   == True:
+            pass
+        elif isinstance(self.r2, np.ndarray) == False:
+            self.r2 = np.asarray(self.r2)
+        else:
+            raise BAD_INPUT
+
         # Find the chord length between the two positions
         if self.options == 'vector':
             c     = np.abs(self.r2 - self.r1) # vector subtraction

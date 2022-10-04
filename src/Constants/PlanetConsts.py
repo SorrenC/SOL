@@ -17,6 +17,8 @@
 
 # Sun
 SUN_MU         = 1.327e+11      # [km^3 / s^2]
+SUN_MASS       = 1.988e+30      # [kg]
+SUN_RADIUS     = 6957000        # [km]
 
 # Mercury 
 MERCURY_MU     = 1

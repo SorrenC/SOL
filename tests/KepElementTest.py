@@ -1,3 +1,4 @@
+# imports 
 import sys
 sys.path += ['C:/Users/sorre/Desktop/Programs/SOL/src/Functions',
             'C:/Users/sorre/Desktop/Programs/SOL/src/Constants']
@@ -8,7 +9,7 @@ from scipy.linalg import norm
 
 # Test to ensure that functions are accurate and working corrctly
 
-# State vectors from Sun body center to Mars 2022-Sep-30 00:00:00 TDB. From JPL's horizon system
+# State vectors from Sun body center to Mars J2000 2022-Sep-30 00:00:00 TDB. From JPL's horizon system
 r  =  [1.705762706464142E+08 , 1.331457466962230E+08 ,-1.393668994909272E+06]
 v  =  [-1.398483275256669E+01,2.117008216903941E+01  ,7.867324973063816E-01]
 Mu =  SUN_MU
