@@ -22,7 +22,7 @@
 import math  as m 
 import numpy as np
 from scipy.linalg import norm 
-import Exceptions
+from Exceptions import BAD_INPUT
 
 
 ### Class Definition ###
@@ -33,6 +33,23 @@ class KepElements():
         self.r  = r                             # Postion state vector
         self.v  = v                             # Velocity state vector 
         self.Mu = Mu                            # Gravitation parameter of central body
+
+        # Check if supplied position vector is a numpy array; if list is supplied then convert it to a numpy array
+        if isinstance(self.r , np.ndarray) == True:
+            pass 
+        elif (isinstance(self.r, list)) == True:
+            self.r = np.asarray(self.r) 
+        elif (isinstance(self.r,np.ndarray)) or (isinstance(self.r,list)) == False:
+            raise BAD_INPUT
+
+        # Check if supplied velocity vector is a numpy array; if list is supplied then convert it to a numpy array
+        if isinstance(self.v , np.ndarray) == True:
+            pass 
+        elif (isinstance(self.v, list)) == True:
+            self.v = np.asarray(self.v) 
+        elif (isinstance(self.v,np.ndarray)) or (isinstance(self.v,list)) == False:
+            raise BAD_INPUT
+
         self.h  = np.cross(self.r,self.v)       # find momentum vector
         self.n  = np.cross([0,0,1],self.h)      # find line of nodes vector
 
@@ -78,7 +95,7 @@ class KepElements():
         return w
 
     # True Anomaly
-    def TrueAnmly(self):
+    def TrueAnomaly(self):
         e = ((1.0/self.Mu) * np.cross(self.v,self.h)) - (np.array(self.r)/norm(self.r))   # find eccentricity vector
         f = np.arccos((np.dot(self.r,e)) / (norm(self.r)*norm(e))) * (180/np.pi)          # Find True anamoly (and convert to degrees)
 
@@ -88,3 +105,15 @@ class KepElements():
         else:
             pass  # do nothing, in the right quadrant 
         return f
+    
+    # Solve all orbital elements; return results in a numpy array
+    def SolveAll(self):
+        e = self.Eccentricity()
+        i = self.inclination()
+        a = self.SemiMajorAxis()
+        W = self.RAAN()
+        w = self.AOP()
+        f = self.TrueAnomaly()
+
+        return np.array([e,i,a,W,w,f],dtype=object)
+
