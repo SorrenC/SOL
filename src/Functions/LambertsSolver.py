@@ -33,7 +33,7 @@
 # imports 
 import math
 import numpy as np
-from scipy.linalg import norm 
+from numpy.linalg import norm 
 from Exceptions import *
 
 class LambertsSolver():
@@ -105,8 +105,10 @@ class LambertsSolver():
                 raise MAX_ITERATIONS_REACHED
         
         # Find velocity at positions one and position two 
-        A  = (np.sqrt(self.Mu/(4*a))) * (1/(np.tan(alpha/2)))
-        B  = (np.sqrt(self.Mu/(4*a))) * (1/(np.tan(beta/2)))
+        cotangent1 = 1 / np.tan(alpha/2)
+        cotangent2 = 1 / np.tan(beta/2)
+        A  = (np.sqrt(self.Mu/(4*a))) * cotangent1
+        B  = (np.sqrt(self.Mu/(4*a))) * cotangent2
 
         u1 = (self.r1) / (norm(self.r1))
         u2 = (self.r2) / (norm(self.r2))
@@ -115,25 +117,9 @@ class LambertsSolver():
         v1 = ((B+A)*uc) + ((B-A)*u1)
         v2 = ((B+A)*uc) - ((B-A)*u2)
 
-        # return a list of vectors/magnitudes
+        # return a tuple of vectors/magnitudes
         return a,v1,v2
+    
+    def NewtonRaphson(self):
+        print("test")
 
-
-# THIS IS ONLY FOR TESTING, DELETE LATER AND MOVE TO SEPARATE TEST FILE 
-if __name__ == '__main__':
-    # This example is the position of Mars from the sun body center taken 1 full day apart
-    r1_vector = [1.705762706464142E+08,1.331457466962230E+08,-1.393668994909272E+06]  # [km]
-    r2_vector = [1.693596693212054E+08,1.349683079588937E+08,-1.325628359792881E+06]  # [km]
-    t         = 24*60*60                                                              # [s]
-    Mu        = 1.327e+11                                                             # [km^3/s^2]
-    Tolerance = 0.0001
-    MaxInt    = 5000
-
-
-    vec_solution=LambertsSolver(r1_vector,r2_vector,t,Mu,Tolerance,MaxInt,'vector')
-    solution= vec_solution.BiSection()
-
-    # Function returns a tuple of numpy arrays, extract data from 'solution'
-    print(solution[0])
-    print(solution[1])
-    print(solution[2])
