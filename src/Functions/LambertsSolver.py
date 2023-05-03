@@ -105,8 +105,8 @@ class LambertsSolver():
                 raise MAX_ITERATIONS_REACHED
         
         # Find velocity at positions one and position two 
-        A  = (np.sqrt(self.Mu/(4*a))) * (np.arctan(alpha/2))
-        B  = (np.sqrt(self.Mu/(4*a))) * (np.arctan(beta/2))
+        A  = (np.sqrt(self.Mu/(4*a))) * (1/(np.tan(alpha/2)))
+        B  = (np.sqrt(self.Mu/(4*a))) * (1/(np.tan(beta/2)))
 
         u1 = (self.r1) / (norm(self.r1))
         u2 = (self.r2) / (norm(self.r2))

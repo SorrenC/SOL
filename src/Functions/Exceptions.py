@@ -25,5 +25,6 @@ class MAX_ITERATIONS_REACHED(Exception):
     pass
 
 class BAD_INPUT(Exception):
+    'Bad Input, did you enter correct values?'
     # Raised whenever a function recieves an incorrect input
     pass
