@@ -14,6 +14,10 @@
 #
 #########################################################################################################
 
+# r1 - initial circular orbit 
+# r2 - desired circular orbit
+# Mu - gravitation parameter of attracting body
+
 # imports 
 import numpy as np
 
