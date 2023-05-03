@@ -48,7 +48,7 @@ class LambertsSolver():
         self.MaxInt    = MaxInt
         self.options   = options
 
-    def solve(self):
+    def BiSection(self):
         
         # check if supplied vectors are a list or a numpy array, convert to numpy array if not
         if isinstance(self.r1, np.ndarray)   == True:
@@ -107,8 +107,8 @@ class LambertsSolver():
                 break
         
         # Find velocity at positions one and position two 
-        A  = np.sqrt(self.Mu/(4*a[0])) * np.arctan(alpha/2)
-        B  = np.sqrt(self.Mu/(4*a[0])) * np.arctan(beta/2)
+        A  = np.sqrt(self.Mu/(4*a)) * np.arctan(alpha/2)
+        B  = np.sqrt(self.Mu/(4*a)) * np.arctan(beta/2)
 
         u1 = (self.r1) / (norm(self.r1))
         u2 = (self.r2) / (norm(self.r2))

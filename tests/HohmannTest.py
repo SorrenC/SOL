@@ -20,7 +20,7 @@ Mu_earth = EARTH_MU             # [km^3 / s^2]
 Hohmann = Hohmann(r1,r2,Mu_earth)
 results = Hohmann.Circular()
 
-print("Delta V1:       %.3f km.s" %results[0])
+print("Delta V1:       %.3f km/s" %results[0])
 print("Delta V2:       %.3f km/s" %results[1])
 print("Total Delta V:  %.3f km/s" %results[2])
 print("Time of Fligth: %.3f s"    %results[3])

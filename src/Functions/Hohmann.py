@@ -14,9 +14,13 @@
 #
 #########################################################################################################
 
-# r1 - initial circular orbit 
-# r2 - desired circular orbit
+# INPUT
+# r1 - initial circular orbit height from center of body
+# r2 - desired circular orbit height from center of body 
 # Mu - gravitation parameter of attracting body
+
+# OUTPUT 
+# np.array containg dV1, dV2, dVTot, and ToF
 
 # imports 
 import numpy as np
