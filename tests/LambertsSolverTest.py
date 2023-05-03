@@ -4,7 +4,7 @@ import numpy as np
 sys.path += ['C:/Users/sorre/Desktop/Programs/SOL/src/Functions','C:/Users/sorre/Desktop/Programs/SOL/src/Constants']
 from LambertsSolver import LambertsSolver
 from KepElements import KepElements
-from scipy.linalg import norm
+from numpy.linalg import norm
 from PlanetConsts import SUN_MU
 
 
@@ -31,9 +31,3 @@ print("Semi Major Axis: %.3f km" %solution[0][0])
 
 ############################ MAGNITUDE EXAMPLE ####################################################################################
 
-r1_vector_mag = norm(r1_vector)
-r2_vector_mag = norm(r2_vector)
-
-mag_solution=LambertsSolver(r1_vector_mag,r2_vector_mag,t,Mu,Tolerance,MaxInt,'magnitude')
-mag_solution=mag_solution.BiSection()
-print("Semi Major Axis: %.3f km" %solution[0][0])
