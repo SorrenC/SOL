@@ -17,14 +17,13 @@
 
 # Define Custom Exceptions
 class NOT_NUMPY_ARRAY(Exception):
-    # raised whenerver a supplied input is not a numpy array
+    'Raised whenerver a supplied input is not a numpy array'
     pass
 
 class MAX_ITERATIONS_REACHED(Exception):
-    # raised whenever maximum iteration counter is reached
+    'Raised whenever maximum iteration counter is reached'
     pass
 
 class BAD_INPUT(Exception):
-    'Bad Input, did you enter correct values?'
-    # Raised whenever a function recieves an incorrect input
+    'Raised whenever a function requires data in a certain format and recieves data not in said format'
     pass

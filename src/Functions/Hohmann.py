@@ -12,15 +12,16 @@
 #
 # Module to calcualte delta V requrments for a variety of Hohmann transfer cases
 #
+# INPUTS:
+#   r1 = initial circular orbit height from center of body
+#   r2 = desired circular orbit height from center of body 
+#   Mu = gravitation parameter of attracting body
+#
+# OUTPUTS: 
+#   np.array containg dV1, dV2, dVTot, and ToF
+#
 #########################################################################################################
 
-# INPUT
-# r1 - initial circular orbit height from center of body
-# r2 - desired circular orbit height from center of body 
-# Mu - gravitation parameter of attracting body
-
-# OUTPUT 
-# np.array containg dV1, dV2, dVTot, and ToF
 
 # imports 
 import numpy as np
