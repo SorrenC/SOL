@@ -14,8 +14,9 @@ from scipy.linalg import norm
 #r  =  np.array([1.705762706464142E+08 , 1.331457466962230E+08 ,-1.393668994909272E+06])
 #v  =  np.array([-1.398483275256669E+01,2.117008216903941E+01  ,7.867324973063816E-01])
 
-r  =  np.array([-7.4445E+07,-2.1231E+08,-2.6124E+06])
-v  =  np.array([2.3821E+01,-5.8506E+00,-7.0653E-01])
+# State vectors from Solar System barycenter to Mars. From JPL's horizon system. Coordinate System: J2000 Ecliptic
+r  =  np.array([-1.591163034225527E+08,1.892356715610578E+08,7.870476085229695E+06])
+v  =  np.array([-17.6949825,-13.46716982,0.15224672])
 Mu =  SUN_MU
 
 d     = KepElements(r,v,Mu)

@@ -47,8 +47,6 @@ class LambertsSolver():
         self.MaxInt    = MaxInt
         self.options   = options
 
-    def BiSection(self):
-        
         # check if supplied vectors are a list or a numpy array, convert to numpy array if not
         if isinstance(self.r1, np.ndarray)   == True:
             pass
@@ -64,6 +62,8 @@ class LambertsSolver():
         else:
             raise BAD_INPUT
 
+    def BiSection(self):
+        
         # Find the chord length between the two positions
         if self.options == 'vector':
             c     = norm(self.r2 - self.r1) # vector subtraction
@@ -121,5 +121,15 @@ class LambertsSolver():
         return a,v1,v2
     
     def NewtonRaphson(self):
+
+        # Find the chord length between the two positions
+        if self.options == 'vector':
+            c     = norm(self.r2 - self.r1) # vector subtraction
+        elif self.options == 'magnitude':
+            theta = np.arccos((np.dot(self.r1,self.r2))/(norm(self.r1) * norm(self.r2))) # angle between two vectors
+            c     = np.sqrt(self.r1**2 + self.r2**2 - 2*self.r1*self.r2*np.cos(theta))   # law of cosines
+        else:
+            raise BAD_INPUT
+        
         print("test")
 
