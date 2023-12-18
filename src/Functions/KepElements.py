@@ -66,7 +66,7 @@ class KepElements():
     # Semi major axis
     def SemiMajorAxis(self):
         E = (((norm(self.v))**2)/2) - (self.Mu/norm(self.r))       # Find total energy of orbit 
-        a = -(self.Mu/(2*E))                        # Find semi major axis of orbit
+        a = -(self.Mu/(2*E))                                       # Find semi major axis of orbit
         return a
 
     # Longitude of Ascending Node a.k.a Right Ascension of Ascending Node
