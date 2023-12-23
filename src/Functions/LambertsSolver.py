@@ -8,11 +8,11 @@
 #
 #########################################################################################################
 
-########################################## LambertsEqn ##################################################
+########################################## LambertsSolver ###############################################
 #
 # Solves lamberts problem given two position measurments and the time of flight between said position 
 # measurments. The program assumes an elliptical orbit. Returns a list
-# This solver uses a bisection algorithm to solve Lamberts equation for semi-major axis
+# This solver uses a numerical methods to solve Lamberts equation for semi-major axis
 #
 # INPUTS:
 #   r1        = position 1 in vector or magnitude. Either python list or numpy array 
@@ -130,6 +130,9 @@ class LambertsSolver():
             c     = np.sqrt(self.r1**2 + self.r2**2 - 2*self.r1*self.r2*np.cos(theta))   # law of cosines
         else:
             raise BAD_INPUT
+        
+        # # Find semi-perimeter 
+        s = (c + norm(self.r1) + norm(self.r2))/2;
         
         print("test")
 

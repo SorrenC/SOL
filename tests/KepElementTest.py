@@ -1,12 +1,12 @@
 # imports 
 import sys
-import numpy as np
 sys.path += ['C:/Users/sorre/Desktop/Programs/SOL/src/Functions',
             'C:/Users/sorre/Desktop/Programs/SOL/src/Constants']
-
+import numpy as np
 from KepElements import KepElements
 from PlanetConsts import SUN_MU
 from scipy.linalg import norm 
+from math import sqrt
 
 # Test to ensure that functions are accurate and working corrctly
 
