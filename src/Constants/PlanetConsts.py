@@ -11,6 +11,8 @@
 ########################################## PlanetConsts #################################################
 #
 # Defines common planetary constants such as gravitational parameter, mass, radius, average density,etc.
+# Also includes the J2 pertubations constants, J2 pertubations are due to the oblatness of a planet. See
+# conceptual guide document for more information. 
 # Data taken from NASA Space Science Data Coordinated Archive (NSSDC)
 #
 #########################################################################################################
