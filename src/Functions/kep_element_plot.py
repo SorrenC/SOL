@@ -36,27 +36,76 @@ from numpy import sin as sin
 from numpy import cos as cos
 
 ### CLASS DEFINITIONS ###
-class KepElementPlot():
+
+
+# Convert orbtial elements in Euler angles to ECI coordinates 
+def KepRotation(i,a,e,W,w):
+
+    # convert degrees to rad
+    i = np.radians(i)
+    W = np.radians(W)
+    w = np.radians(w)
+
+    # Rotation matrix from perifocal coordinates to equitorial coordinates
+    R = np.array([[(cos(W)*cos(w))-(sin(W)*sin(w)*cos(i)), (-cos(W)*sin(w))-(sin(W)*sin(w)*cos(i)), sin(W)*sin(i)],
+                [(sin(W)*cos(w))+(cos(W)*sin(w)*cos(i)), (-sin(W)*sin(w))+(cos(W)*cos(w)*cos(i)), -cos(W)*sin(i)],
+                [(sin(i)*sin(w)), (sin(i)*cos(w)), cos(i)]])
+
+        # Rotation matrices
+    #R1 = np.array([[np.cos(W), -np.sin(W), 0],
+    #               [np.sin(W), np.cos(W), 0],
+    #               [0, 0, 1]])
+
+    #R2 = np.array([[1, 0, 0],
+    #               [0, np.cos(i), -np.sin(i)],
+    #               [0, np.sin(i), np.cos(i)]])
+
+    #R3 = np.array([[np.cos(w), -np.sin(w), 0],
+    #               [np.sin(w), np.cos(w), 0],
+    #               [0, 0, 1]])
+
+    # Full transformation
+    #R = R1 @ R2 @ R3
+        
+    # Need values of all true anomalies to trace out the orbit. Create 1000 evenly space points between 0 and 2*pi i.e a full orbit
+    f_range = np.linspace(0,2*np.pi,1000)
+
+    # Find orbital radius in the orbital plane
+    radius = ((a*(1-e**2))/(1+(e*cos(f_range))))
+
+    # Find position in orbital plane
+    x = radius*sin(f_range)
+    y = radius*cos(f_range)
+
+    # Perform matrix multiplication to transform perifocal frame to equitorial frame
+    equitorial_orbit_3D = np.dot(R, np.vstack((x, y, np.zeros_like(x))))
+
+    return equitorial_orbit_3D
     
-    # Class variables
-    def __init__(self,i,a,e,W,w,f):
-        self.i = i # orbital inclination
-        self.a = a # semi major axis
-        self.e = e # orbital eccentricity
-        self.W = W # Right asscension of ascending node
-        self.w = w # argument of periapsis
-        self.f = f # true anomaly 
+# Function to plot orbit in equitorial frame from keplerian orbital elements
+def KepPlot(i,a,e,W,w):
+    Orbit = KepRotation(i,a,e,W,w)
 
-    # Convert orbtial elements in Euler angles to ECI coordinates 
-    def KepRoataion():
+    fig = plt.figure(figsize=(8,8))
+    ax = fig.add_subplot(111,projection='3d')
 
-        # convert degrees to rad
-        i = np.radians(i)
-        W = np.radians(W)
-        w = np.radians(w)
-        f = np.radians(f)
+    ax.plot(Orbit[0],Orbit[1],Orbit[2],label='Orbit Path',color='b')
+    ax.scatter([0],[0],[0],color='yellow',s=200,label='Central Body')
 
-        # Rotation matrix from perifocal coordinates to equitorial coordinates
-        r = np.array([(cos(W)*cos(w))-(sin(W)*sin(w)*cos(i)), (-cos(W)*sin(w))-(sin(W)*sin(w)*cos(i)), sin(W)*sin(i)],
-                     [(sin(W)*cos(w))+(cos(W)*sin(w)*cos(i)), (-sin(W)*sin(w))+(cos(W)*cos(w)*cos(i)), -cos(W)*sin(i)],
-                     [(sin(i)*sin(w)), (sin(i)*cos(w)), cos(i)])
+    ax.set_xlabel("X (km)")
+    ax.set_ylabel("Y (km)")
+    ax.set_zlabel("Z (km)")
+    ax.set_title("3D Orbit Plot")
+
+    ax.legend()
+    plt.show()
+
+
+## Test
+a = 42164
+e = 0
+i = 0
+W = 0
+w = 0
+
+KepPlot(i,a,e,W,w)
