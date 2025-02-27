@@ -39,16 +39,14 @@ from numpy import cos as cos
 
 class KepElementPlot():
 
-    def __init__(self,Inclination,SemiMajorAxis,Eccentricity,RAAN,AOP,TrueAnomaly):
+    def __init__(self,Inclination,SemiMajorAxis,Eccentricity,Raan,Aop,TrueAnomaly):
 
         self.i = Inclination # Orbital Inclination [deg]
         self.a = SemiMajorAxis # Semi major axis [km]
         self.e = Eccentricity # Orbital eccentricity [dimensionless]
-        self.W = RAAN # Right asscension of ascending node [deg]
-        self.w = AOP # Argument of periapsis [deg]
+        self.W = Raan # Right asscension of ascending node [deg]
+        self.w = Aop # Argument of periapsis [deg]
         self.f = TrueAnomaly # True anomaly [deg]
-
-        # add function here to check if user supplied inputs are the expected type i.e ints or floats and not something like a string
 
     # Convert orbtial elements in Euler angles to ECI coordinates 
     def KepRotation(self):
@@ -66,7 +64,7 @@ class KepElementPlot():
         # Need values of all true anomalies to trace out the orbit. Create 1000 evenly space points between 0 and 2*pi i.e a full orbit
         f_range = np.linspace(0,2*np.pi,1000)
 
-        # Find orbital radius in the orbital plane
+        # Find orbital radius in the orbital plane for each value of true anomaly
         radius = ((self.a*(1-self.e**2))/(1+(self.e*cos(f_range))))
 
         # Find position in orbital plane
@@ -105,11 +103,11 @@ class KepElementPlot():
         plt.show()
 
 
-e=0.092    
-i=1.848 
+e=0   
+i=0
 a=229424967.891
-W=49 
-w=70 
+W=0
+w=0
 f=150.814 
 
 Plot = KepElementPlot(i,a,e,W,w,f)
