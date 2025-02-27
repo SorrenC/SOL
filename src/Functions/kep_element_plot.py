@@ -37,41 +37,36 @@ from numpy import cos as cos
 
 ### CLASS DEFINITIONS ###
 
+class KepElementPlot(self):
 
-# Convert orbtial elements in Euler angles to ECI coordinates 
-def KepRotation(i,a,e,W,w):
+    def __init__(self,i,a,e,W,w,f):
+        self.i = i # Orbital Inclination [deg]
+        self.a = a # Semi major axis [km]
+        self.e = e # Orbital eccentricity [dimensionless]
+        self.W = W # Right asscension of ascending node [deg]
+        self.w = w # Argument of periapsis [deg]
+        self.f = f # True anomaly [deg]
+
+        # add function here to check if user supplied inputs are the expected type i.e ints or floats and not something like a string
+
+    # Convert orbtial elements in Euler angles to ECI coordinates 
+    def KepRotation(self):
 
     # convert degrees to rad
-    i = np.radians(i)
-    W = np.radians(W)
-    w = np.radians(w)
+    i = np.radians(self.i)
+    W = np.radians(self.W)
+    w = np.radians(self.w)
 
     # Rotation matrix from perifocal coordinates to equitorial coordinates
     R = np.array([[(cos(W)*cos(w))-(sin(W)*sin(w)*cos(i)), (-cos(W)*sin(w))-(sin(W)*sin(w)*cos(i)), sin(W)*sin(i)],
                 [(sin(W)*cos(w))+(cos(W)*sin(w)*cos(i)), (-sin(W)*sin(w))+(cos(W)*cos(w)*cos(i)), -cos(W)*sin(i)],
                 [(sin(i)*sin(w)), (sin(i)*cos(w)), cos(i)]])
-
-        # Rotation matrices
-    #R1 = np.array([[np.cos(W), -np.sin(W), 0],
-    #               [np.sin(W), np.cos(W), 0],
-    #               [0, 0, 1]])
-
-    #R2 = np.array([[1, 0, 0],
-    #               [0, np.cos(i), -np.sin(i)],
-    #               [0, np.sin(i), np.cos(i)]])
-
-    #R3 = np.array([[np.cos(w), -np.sin(w), 0],
-    #               [np.sin(w), np.cos(w), 0],
-    #               [0, 0, 1]])
-
-    # Full transformation
-    #R = R1 @ R2 @ R3
         
     # Need values of all true anomalies to trace out the orbit. Create 1000 evenly space points between 0 and 2*pi i.e a full orbit
     f_range = np.linspace(0,2*np.pi,1000)
 
     # Find orbital radius in the orbital plane
-    radius = ((a*(1-e**2))/(1+(e*cos(f_range))))
+    radius = ((self.a*(1-self.e**2))/(1+(self.e*cos(f_range))))
 
     # Find position in orbital plane
     x = radius*sin(f_range)
@@ -83,7 +78,7 @@ def KepRotation(i,a,e,W,w):
     return equitorial_orbit_3D
     
 # Function to plot orbit in equitorial frame from keplerian orbital elements
-def KepPlot(i,a,e,W,w):
+    def Plot(self):
     Orbit = KepRotation(i,a,e,W,w)
 
     fig = plt.figure(figsize=(8,8))
@@ -96,16 +91,22 @@ def KepPlot(i,a,e,W,w):
     ax.set_ylabel("Y (km)")
     ax.set_zlabel("Z (km)")
     ax.set_title("3D Orbit Plot")
+    
+    ## NEED TO FIGURE OUT BETTER WAY TO AUTOMATICALLY SET AXES SCALE SO PLOT IS NOT STRETCHED
+    ax.set_zlim([-8e10,6e10])
+    #ax.set_xlim([-10e8,10e8])
+    #ax.set_ylim([-4e8,4e8])
+
+    ax.view_init(elev=30,azim=45)  # Adjust elevation and azimuth as needed
 
     ax.legend()
     plt.show()
 
 
-## Test
-a = 42164
-e = 0
-i = 0
-W = 0
-w = 0
-
-KepPlot(i,a,e,W,w)
+e=0.092    
+i=1.848 
+a=229424967.891
+W=49 
+w=70 
+f=150.814 
+KepElementPlot.Plot(i,a,e,W,w)
