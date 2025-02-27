@@ -16,3 +16,5 @@ A collection of scripts and programs I wrote during my time as an undergraduate 
     `$ python -m pip install numpy`
 * Scipy: for math operations 
     `$ python -m pip install scipy`
+* Matplotlib: for plotting and graph functions
+    `$ python -m pip install matplotlib`
