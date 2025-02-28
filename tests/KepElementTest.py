@@ -36,3 +36,13 @@ print("R.A.A.N:              %.3f deg" %Raan)
 print("Argument of Peripsis  %.3f deg" %Aop)
 print("True Anomaly:         %.3f deg" %TrAnm)
 
+
+#(self,J2,R,a,e,i):
+J2 = 1082.63e-6
+Re = 6378.1363
+a  = 7000
+e  = 0.001
+i  = np.radians(98)
+
+RaanJ2 = d.RaanJ2(J2,Re,a,e,i)
+print(RaanJ2)

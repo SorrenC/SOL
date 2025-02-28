@@ -116,4 +116,25 @@ class KepElements():
         f = self.TrueAnomaly()
 
         return np.array([e,i,a,W,w,f],dtype=object)
+    
+    def RaanJ2(self,J2,R,a,e,i):
+        #
+        # RaanJ2
+        # 
+        # Calculates the effect of J2 pertubations on the RAAN as a function of time i.e d(Omega)/dt
+        #
+        # Inputs:
+        #       J2 = J2 constant                                    [dimensionless]
+        #       R  = Radius of central body                         [km]
+        #       a  = semi-major axis of the orbiting bodies orbit   [km]
+        #       e  = eccentricity of the orbiting bodies orbit      [dimensionless]
+        #       i  = orbital inclination of orbiting body           [rad]
+        #
+        # Outputs:
+        #       
+        
+        # Curtis pg. 197 1st ed eqn. 4.47
+        NodalPrecession = -((3/2)*(((np.sqrt(self.Mu))*(J2)*(R**2))/(  ((1-e**2)**2)*(a**(7/2)))))*(np.cos(i))
+
+        return NodalPrecession
 
