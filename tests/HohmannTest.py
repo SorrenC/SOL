@@ -11,11 +11,12 @@ from PlanetConsts import EARTH_RADIUS
 
 # Go from a circular orbit to another circualr orbit around Earth
 # R1 and R2 must be given as the orbital radius from the center of the body, NOT ALTITUDE!
+# If you problem specifies an initial and final orbit by altitude you MUST add the radius of the earth to that value i.e 300 km + EARTH_RADIUS
 
-# Example, altitude of 300 km to 800 km around Earth
-r1       = 300 + EARTH_RADIUS   # [km]
-r2       = 800 + EARTH_RADIUS   # [km]
-Mu_earth = EARTH_MU             # [km^3 / s^2]
+# Example
+r1       = 6700         # [km]
+r2       = 93800        # [km]
+Mu_earth = EARTH_MU     # [km^3 / s^2]
 
 Hohmann = Hohmann(r1,r2,Mu_earth)
 results = Hohmann.Circular()

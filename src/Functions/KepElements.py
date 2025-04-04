@@ -50,6 +50,7 @@ class KepElements():
         elif (isinstance(self.v,np.ndarray)) or (isinstance(self.v,list)) == False:
             raise BAD_INPUT
 
+        # Values pertinent to all classical orbital elements
         self.h  = np.cross(self.r,self.v)       # find momentum vector
         self.n  = np.cross([0,0,1],self.h)      # find line of nodes vector
 
@@ -131,10 +132,10 @@ class KepElements():
         #       i  = orbital inclination of orbiting body           [rad]
         #
         # Outputs:
-        #       
+        #       dWdt
         
         # Curtis pg. 197 1st ed eqn. 4.47
-        NodalPrecession = -((3/2)*(((np.sqrt(self.Mu))*(J2)*(R**2))/(  ((1-e**2)**2)*(a**(7/2)))))*(np.cos(i))
+        dWdt = -((3/2)*(((np.sqrt(self.Mu))*(J2)*(R**2))/(  ((1-e**2)**2)*(a**(7/2)))))*(np.cos(i))
 
-        return NodalPrecession
+        return dWdt
 

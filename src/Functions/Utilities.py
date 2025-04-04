@@ -20,6 +20,12 @@
 import numpy as np
 import math  as m
 
+######################################## Mathematic Functions ###########################################
+#
+# Simple mathematic functions that do not warrant their own class/function file. 
+#
+#########################################################################################################
+
 # Input angle in RADIANS and return the cotangent of that angle 
 def cotan(theta):
     return (1)/(np.tan(theta))
