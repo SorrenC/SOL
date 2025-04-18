@@ -34,7 +34,7 @@
 import math
 import numpy as np
 from numpy.linalg import norm 
-from Exceptions import *
+from .Exceptions import *
 
 class LambertsSolver():
 

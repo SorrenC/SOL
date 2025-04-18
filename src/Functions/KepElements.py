@@ -21,8 +21,8 @@
 ### Imports ###
 import math  as m 
 import numpy as np
-from scipy.linalg import norm 
-from Exceptions import BAD_INPUT
+from numpy.linalg import norm 
+from .Exceptions import BAD_INPUT
 
 
 ### Class Definition ###

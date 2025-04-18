@@ -1,13 +1,16 @@
 # imports 
 import sys
-sys.path += ['C:/Users/sorre/Desktop/Programs/SOL/src/Functions',
-            'C:/Users/sorre/Desktop/Programs/SOL/src/Constants']
-import numpy as np
-from KepElements import KepElements
-from PlanetConsts import SUN_MU
-from scipy.linalg import norm 
-from math import sqrt
+import os 
 
+# Add the project root to sys.path and also put path at top of list so python searches this path first
+rootpath = sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+if rootpath not in sys.path:
+    sys.path.insert(0,rootpath)
+
+import numpy as np
+from numpy.linalg import norm
+from src.Functions.KepElements import KepElements
+from src.Functions.PlanetConsts import SUN_MU
 
 # Test to ensure that functions are accurate and working corrctly
 
