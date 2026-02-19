@@ -138,4 +138,3 @@ class KepElements():
         dWdt = -((3/2)*(((np.sqrt(self.Mu))*(J2)*(R**2))/(  ((1-e**2)**2)*(a**(7/2)))))*(np.cos(i))
 
         return dWdt
-
