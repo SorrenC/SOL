@@ -39,8 +39,8 @@ SUN = OrbtialBody(
         Name = "Sun",
         mass = 1.988e+30, 
         radius_mean = 6957000, 
-        radius_equitorial = 6957000, 
-        radius_polar = 6957000, 
+        radius_equitorial = None, 
+        radius_polar = None, 
         mu = 1.327e+11, 
         j2 = None, 
         j3 = None, 
@@ -49,9 +49,9 @@ SUN = OrbtialBody(
 )
 
 # Sun
-SUN_MU         = 1.327e+11      # [km^3 / s^2]
-SUN_MASS       = 1.988e+30      # [kg]
-SUN_RADIUS     = 6957000        # [km]
+#SUN_MU         = 1.327e+11      # [km^3 / s^2]
+#SUN_MASS       = 1.988e+30      # [kg]
+#SUN_RADIUS     = 6957000        # [km]
 
 # Mercury 
 MERCURY_MU     = 2.2030e+4      # [km^3 / s^2]

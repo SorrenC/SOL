@@ -38,7 +38,7 @@ from .Exceptions import *
 
 class LambertsSolver():
 
-    def __init__(self,r1: float,r2: float,t: float,Mu: float,Tolerance: int,MaxInt: int,options):
+    def __init__(self,r1: list[float],r2: list[float],t: float,Mu: float,Tolerance: float,MaxInt: int,options: str):
         self.r1        = r1
         self.r2        = r2
         self.t         = t
@@ -50,7 +50,7 @@ class LambertsSolver():
         # check if supplied vectors are a list or a numpy array, convert to numpy array if not
         if isinstance(self.r1, np.ndarray):
             pass
-        elif isinstance(self.r1, np.ndarray):
+        elif isinstance(self.r1, np.ndarray) == False:
             self.r1 = np.asarray(self.r1)
         else:
             raise BAD_INPUT
