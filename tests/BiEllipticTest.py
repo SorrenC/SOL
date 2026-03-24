@@ -8,7 +8,7 @@ if rootpath not in sys.path:
     sys.path.insert(0,rootpath)
 
 import numpy as np
-from src.Functions.BiElliptic import *
+from src.Functions.BiElliptic import BiElliptic
 from src.Functions.PlanetConsts import EARTH_MU
 
 

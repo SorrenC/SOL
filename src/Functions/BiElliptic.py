@@ -20,7 +20,7 @@ import matplotlib.pyplot as plt
 
 class BiElliptic():
 
-    def Circular(Mu,Ri,Rf,Rb):
+    def Circular(Mu: float,Ri: float,Rf: float,Rb: float) -> np.array:
         # Circular
         #
         # Inputs: 
@@ -60,8 +60,8 @@ class BiElliptic():
 
         return np.array([dV1,dV2,dV3,dVtot,t1,t2,t])
     
-    def Plot(Ri,Rf,Rb):
-        
+    def Plot(Ri: float,Rf: float,Rb: float) -> None:
+        # Plot the bi-elliptic transfer ellipse for the given parameters.
         center_x = 0
         center_y = 0
 

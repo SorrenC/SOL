@@ -14,8 +14,39 @@
 # Also includes the J2 pertubations constants, J2 pertubations are due to the oblatness of a planet. See
 # conceptual guide document for more information. 
 # Data taken from NASA Space Science Data Coordinated Archive (NSSDC)
-#
+# WIP: rewrite to use a dataclass+registry, more "pythonic" and easier to scale
 #########################################################################################################
+
+# Imports
+from dataclasses import dataclass, field
+from typing import Optional
+
+# Create dataclass 
+@dataclass(frozen=True)
+class OrbtialBody:
+        Name: str                   # 
+        mass: float                 # [kg]
+        radius_mean: float          # [km]
+        radius_equitorial: float    # [km]
+        radius_polar: float         # [km]
+        mu: float                   # [km^3 / s^2]
+        j2: Optional[float]         # [Dimensionless]
+        j3: Optional[float]         # [Dimensionless]
+        j4: Optional[float]         # [Dimensionless]
+        j5: Optional[float]         # [Dimensionless]
+
+SUN = OrbtialBody(
+        Name = "Sun",
+        mass = 1.988e+30, 
+        radius_mean = 6957000, 
+        radius_equitorial = 6957000, 
+        radius_polar = 6957000, 
+        mu = 1.327e+11, 
+        j2 = None, 
+        j3 = None, 
+        j4 = None, 
+        j5 = None
+)
 
 # Sun
 SUN_MU         = 1.327e+11      # [km^3 / s^2]

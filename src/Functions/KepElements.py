@@ -29,7 +29,7 @@ from .Exceptions import BAD_INPUT
 class KepElements():
 
     # Class variables
-    def __init__(self,r,v,Mu):
+    def __init__(self,r,v,Mu: float):
         self.r  = r                             # Postion state vector
         self.v  = v                             # Velocity state vector 
         self.Mu = Mu                            # Gravitation parameter of central body

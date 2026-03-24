@@ -1,5 +1,7 @@
 import sys
 import os 
+from numpy.linalg import norm
+
 
 # Add the project root to sys.path and also put path at top of list so python searches this path first
 rootpath = sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
@@ -8,8 +10,7 @@ if rootpath not in sys.path:
 
 from src.Functions.LambertsSolver import LambertsSolver
 from src.Functions.KepElements import KepElements
-from src.Functions.PlanetConsts import SUN_MU
-from numpy.linalg import norm
+from src.Functions.PlanetConsts import SUN 
 
 
 # Example of using the lamberts solver function to obtain state vectors v1 and v2 from intial 
@@ -22,7 +23,7 @@ from numpy.linalg import norm
 r1_vector        = [-1.591163034225527E+08,1.892356715610578E+08,7.870476085229695E+06]  # [km]
 r2_vector        = [-1.666285496079473E+08,1.832649379659352E+08,7.929803072247460E+06]  # [km]
 t                = 5*24*60*60                                                            # [s]
-Mu               = SUN_MU                                                                # [km^3/s^2]
+Mu               = SUN.mu                                                               # [km^3/s^2]
 Tolerance        = 0.0001
 MaxInt           = 10000
 
@@ -41,7 +42,7 @@ print(solution[2])
 # Now use known postion vector 1 of Mars and the calcualted velocity vector at point 1 to calcualte Mars orbital elements
 r  = [-1.591163034225527E+08,1.892356715610578E+08,7.870476085229695E+06]  # [km]
 v  = [-17.6949825,-13.46716982,0.15224672]
-Mu =  SUN_MU
+Mu =  SUN.mu
 
 d     = KepElements(r1_vector,v,Mu)
 eccen = d.Eccentricity()
@@ -52,7 +53,7 @@ Aop   = d.AOP()
 TrAnm = d.TrueAnomaly()
 All   = d.SolveAll()
 
-print("Eccentricity:         %.3f    " %norm(eccen))
+print("Eccentricity:         %.5f    " %norm(eccen))
 print("Orbital Inclination:  %.3f deg" %inc)
 print("SemiMajor Axis:       %.3f km"  %norm(a))
 print("R.A.A.N:              %.3f deg" %Raan)
