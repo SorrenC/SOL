@@ -29,25 +29,25 @@ from .Exceptions import BAD_INPUT
 class KepElements():
 
     # Class variables
-    def __init__(self,r,v,Mu: float):
+    def __init__(self,r: np.ndarray,v: np.ndarray,Mu: float) -> None:
         self.r  = r                             # Postion state vector
         self.v  = v                             # Velocity state vector 
         self.Mu = Mu                            # Gravitation parameter of central body
 
-        # Check if supplied position vector is a numpy array; if list is supplied then convert it to a numpy array
-        if isinstance(self.r , np.ndarray) == True:
+        # Check if supplied position vector is a numpy array; if list is supplied then convert it to a numpy array; if neither raise BAD_INPUT error
+        if isinstance(self.r , np.ndarray):
             pass 
-        elif (isinstance(self.r, list)) == True:
+        elif not (isinstance(self.r, list)):
             self.r = np.asarray(self.r) 
-        elif (isinstance(self.r,np.ndarray)) or (isinstance(self.r,list)) == False:
+        elif (isinstance(self.r,np.ndarray)) or not (isinstance(self.r,list)):
             raise BAD_INPUT
 
         # Check if supplied velocity vector is a numpy array; if list is supplied then convert it to a numpy array
-        if isinstance(self.v , np.ndarray) == True:
+        if isinstance(self.v , np.ndarray):
             pass 
-        elif (isinstance(self.v, list)) == True:
+        elif not (isinstance(self.v, list)):
             self.v = np.asarray(self.v) 
-        elif (isinstance(self.v,np.ndarray)) or (isinstance(self.v,list)) == False:
+        elif (isinstance(self.v,np.ndarray)) or not (isinstance(self.v,list)):
             raise BAD_INPUT
 
         # Values pertinent to all classical orbital elements
@@ -118,7 +118,7 @@ class KepElements():
 
         return np.array([e,i,a,W,w,f],dtype=object)
     
-    def RaanJ2(self,J2,R,a,e,i):
+    def RaanJ2(self,J2: float, R: float, a: float, e: float, i: float):
         #
         # RaanJ2
         # 

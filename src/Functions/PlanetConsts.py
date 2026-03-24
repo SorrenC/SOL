@@ -18,10 +18,10 @@
 #########################################################################################################
 
 # Imports
-from dataclasses import dataclass, field
+from dataclasses import dataclass
 from typing import Optional
 
-# Create dataclass 
+# Create dataclass for storing physical and orbital data of planets and other orbital bodies. Immutable because these values should not change
 @dataclass(frozen=True)
 class OrbtialBody:
         Name: str                   # 
@@ -48,16 +48,18 @@ SUN = OrbtialBody(
         j5 = None
 )
 
-# Sun
-#SUN_MU         = 1.327e+11      # [km^3 / s^2]
-#SUN_MASS       = 1.988e+30      # [kg]
-#SUN_RADIUS     = 6957000        # [km]
-
-# Mercury 
-MERCURY_MU     = 2.2030e+4      # [km^3 / s^2]
-MERCURY_MASS   = 0.330e+24      # [kg]
-MERCURY_RADIUS = (4879)/2       # [km]
-MERCURY_J2     = 50.3e-6        # [Dimensionless]
+MERCURY = OrbtialBody(
+        Name = "Mercury",
+        mass = 0.330e+24, 
+        radius_mean = (4879)/2, 
+        radius_equitorial = None,
+        radius_polar = None,
+        mu = 2.2030e+4, 
+        j2 = 50.3e-6, 
+        j3 = None, 
+        j4 = None, 
+        j5 = None
+)
 
 # Venus
 VENUS_MU       = 3.249e+5       # [km^3 / s^2]

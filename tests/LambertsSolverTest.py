@@ -23,7 +23,7 @@ from src.Functions.PlanetConsts import SUN
 r1_vector        = [-1.591163034225527E+08,1.892356715610578E+08,7.870476085229695E+06]  # [km]
 r2_vector        = [-1.666285496079473E+08,1.832649379659352E+08,7.929803072247460E+06]  # [km]
 t                = 5*24*60*60                                                            # [s]
-Mu               = SUN.mu                                                             # [km^3/s^2]
+Mu               = SUN.mu                                                                # [km^3/s^2]
 Tolerance        = 0.0001
 MaxInt           = 10000
 

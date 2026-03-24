@@ -34,7 +34,7 @@
 import math
 import numpy as np
 from numpy.linalg import norm 
-from .Exceptions import *
+from .Exceptions import BAD_INPUT, MAX_ITERATIONS_REACHED
 
 class LambertsSolver():
 
@@ -50,19 +50,19 @@ class LambertsSolver():
         # check if supplied vectors are a list or a numpy array, convert to numpy array if not
         if isinstance(self.r1, np.ndarray):
             pass
-        elif isinstance(self.r1, np.ndarray) == False:
+        elif not isinstance(self.r1, np.ndarray): # remove == False, apparently "not" is the correct way to check if something is not an instance of a class according to PEP8
             self.r1 = np.asarray(self.r1)
         else:
             raise BAD_INPUT
         
         if isinstance(self.r2, np.ndarray):
             pass
-        elif isinstance(self.r2, np.ndarray) == False:
+        elif not isinstance(self.r2, np.ndarray): # remove == False, apparently "not" is the correct way to check if something is not an instance of a class according to PEP8
             self.r2 = np.asarray(self.r2)
         else:
             raise BAD_INPUT
 
-    def BiSection(self):
+    def BiSection(self) -> tuple[float, np.ndarray, np.ndarray]:
         
         # Find the chord length between the two positions
         if self.options == 'vector':
