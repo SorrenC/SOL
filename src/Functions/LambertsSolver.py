@@ -38,7 +38,7 @@ from .Exceptions import BAD_INPUT, MAX_ITERATIONS_REACHED
 
 class LambertsSolver():
 
-    def __init__(self,r1: list[float],r2: list[float],t: float,Mu: float,Tolerance: float,MaxInt: int,options: str):
+    def __init__(self,r1: list[float],r2: list[float],t: float,Mu: float,Tolerance: float,MaxInt: int,options: str) -> None:
         self.r1        = r1
         self.r2        = r2
         self.t         = t
@@ -117,9 +117,10 @@ class LambertsSolver():
         v1 = ((B+A)*uc) + ((B-A)*u1)
         v2 = ((B+A)*uc) - ((B-A)*u2)
 
-        # return a tuple of vectors/magnitudes
-        return a,v1,v2
+        # return a tuple containing the semi-major axis, velocity at position 1, and velocity at position 2
+        return a, v1, v2
     
+    # WIP
     def NewtonRaphson(self):
 
         # Find the chord length between the two positions

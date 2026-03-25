@@ -18,6 +18,7 @@
 
 # imports 
 import numpy as np
+import numpy.typing as npt
 import math  as m
 
 ######################################## Mathematic Functions ###########################################
@@ -48,3 +49,14 @@ def ApoapseVelocity(Mu,a,e):
 # orbit and return the velocity of the object at that specific point in the orbit
 def VisViva(Mu,a,r):
     return np.sqrt(Mu*((2/r)-(1/a)))
+
+
+######################################## Type Aliases ###################################################
+#
+# Create type aliases for numpy datatypes such as ndarray and float64, makes it easier to read
+#
+#########################################################################################################
+
+FloatArray64 = npt.NDArray[np.float64]      # Type alias for numpy array of 64 bit floats
+Array = npt.NDArray                         # Type alias for numpy array of any type    
+Float64 = np.float64                        # Type alias for 64 bit float  

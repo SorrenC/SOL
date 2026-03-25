@@ -8,7 +8,7 @@
 #
 #########################################################################################################
 
-########################################## OrbitalDetermination #########################################
+################################### InitialOrbitalDetermination (IOD) ###################################
 #
 # Determines an orbit based on observational measurments. Uses Gauss's methods of orbital
 # determination to uniquely fit an orbit based on observational data and outputs the six keplerian 

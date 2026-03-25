@@ -30,7 +30,7 @@ All   = d.SolveAll()
 
 print("Eccentricity:         %.3f    " %norm(eccen))
 print("Orbital Inclination:  %.3f deg" %inc)
-print("SemiMajor Axis:       %.3f km"  %norm(a))
+print("SemiMajor Axis:       %.3f km"  %a)
 print("R.A.A.N:              %.3f deg" %Raan)
 print("Argument of Peripsis  %.3f deg" %Aop)
 print("True Anomaly:         %.3f deg" %TrAnm)
@@ -44,4 +44,3 @@ e  = 0.001
 i  = np.radians(98)
 
 RaanJ2 = d.RaanJ2(J2,Re,a,e,i)
-print(RaanJ2)

@@ -35,12 +35,13 @@ import math as m
 import matplotlib.pyplot as plt
 from numpy import sin as sin 
 from numpy import cos as cos
+from .Utilities import Array
 
 ### CLASS DEFINITIONS ###
 
 class KepElementPlot():
 
-    def __init__(self,Inclination,SemiMajorAxis,Eccentricity,Raan,Aop,TrueAnomaly):
+    def __init__(self,Inclination: float,SemiMajorAxis: float,Eccentricity: float,Raan: float,Aop: float,TrueAnomaly: float) -> None:
 
         self.i = Inclination # Orbital Inclination [deg]
         self.a = SemiMajorAxis # Semi major axis [km]
@@ -50,7 +51,7 @@ class KepElementPlot():
         self.f = TrueAnomaly # True anomaly [deg]
 
     # Convert orbtial elements in Euler angles to ECI coordinates 
-    def KepRotation(self):
+    def KepRotation(self) -> Array: 
 
         # convert degrees to rad
         i = np.radians(self.i)
@@ -78,7 +79,7 @@ class KepElementPlot():
         return equitorial_orbit_3D
     
     # Function to plot orbit in equitorial frame from keplerian orbital elements
-    def KepPlot(self):
+    def KepPlot(self) -> None:
 
         Orbit = self.KepRotation()
 
@@ -94,7 +95,7 @@ class KepElementPlot():
         ax.set_title("3D Orbit Plot")
     
         ## NEED TO FIGURE OUT BETTER WAY TO AUTOMATICALLY SET AXES SCALE SO PLOT IS NOT STRETCHED
-        ax.set_zlim([-8e10,6e10])
+        #ax.set_zlim([-8e10,6e10])
         #ax.set_xlim([-10e8,10e8])
         #ax.set_ylim([-4e8,4e8])
 
@@ -102,15 +103,14 @@ class KepElementPlot():
 
         ax.legend()
         plt.show()
-
+        
 
 ## TEST DATA
 e=0
-i=79
+i=40
 a=2294967.891
 W=50
 w=30
 f=150.814 
 
-Plot = KepElementPlot(i,a,e,W,w,f)
-Plot.KepPlot()
+Plot = KepElementPlot(i,a,e,W,w,f).KepPlot()

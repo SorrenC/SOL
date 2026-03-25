@@ -23,6 +23,7 @@ import math  as m
 import numpy as np
 from numpy.linalg import norm 
 from .Exceptions import BAD_INPUT
+from .Utilities import FloatArray64, Float64, Array
 
 
 ### Class Definition ###
@@ -55,25 +56,23 @@ class KepElements():
         self.n  = np.cross([0,0,1],self.h)      # find line of nodes vector
 
     # Eccentricity 
-    def Eccentricity(self):
+    def Eccentricity(self) -> Array:
         e = ((1.0/self.Mu) * np.cross(self.v,self.h)) - (np.array(self.r)/norm(self.r))     # find eccentricity vector
-        return e
+        return e                                                                            # THIS RETURNS THE ECCENTRICITY VECTOR, NOT THE SCALAR VALUE. USE NORM() TO GET SCALAR VALUE
 
     # Orbital inclination
-    def inclination(self):
+    def inclination(self) -> Float64:
         i = (np.arccos(np.dot((self.h/norm(self.h)),np.array([0,0,1])))) * (180/m.pi)     # find orbital inclination, and convert to degrees
         return i 
 
     # Semi major axis
-    def SemiMajorAxis(self):
+    def SemiMajorAxis(self) -> Float64:
         E = (((norm(self.v))**2)/2) - (self.Mu/norm(self.r))       # Find total energy of orbit 
         a = -(self.Mu/(2*E))                                       # Find semi major axis of orbit
         return a
 
     # Longitude of Ascending Node a.k.a Right Ascension of Ascending Node
-    def RAAN(self):
-        #N_vector = np.cross([0,0,1],self.h)
-        #W = (np.arccos((N_vector[0])/(norm(N_vector)))) * (180/m.pi)           # Find Right Ascension of Ascending Note, and convert to degrees
+    def RAAN(self) -> Float64:
         W = (np.arccos(np.dot([1,0,0],(self.n/norm(self.n))))) * (180/m.pi)     # Find Right Ascension of Ascending Note, and convert to degrees
 
         # Need to check for quadrant ambiguity 
@@ -84,7 +83,7 @@ class KepElements():
         return W
 
     # Argument of Periapsis
-    def AOP(self):
+    def AOP(self) -> Float64:
         e = ((1.0/self.Mu) * np.cross(self.v,self.h)) - (np.array(self.r)/norm(self.r))   # find eccentricity vector
         w = np.arccos((np.dot(self.n,e)) / (norm(self.n) * norm(e))) * (180/np.pi)        # Find Argument of Perigee (and convert to degrees)
 
@@ -96,7 +95,7 @@ class KepElements():
         return w
 
     # True Anomaly
-    def TrueAnomaly(self):
+    def TrueAnomaly(self) -> Float64:
         e = ((1.0/self.Mu) * np.cross(self.v,self.h)) - (np.array(self.r)/norm(self.r))   # find eccentricity vector
         f = np.arccos((np.dot(self.r,e)) / (norm(self.r)*norm(e))) * (180/np.pi)          # Find True anamoly (and convert to degrees)
 
@@ -108,7 +107,7 @@ class KepElements():
         return f
     
     # Solve all orbital elements; return results in a numpy array
-    def SolveAll(self):
+    def SolveAll(self) -> Array:
         e = self.Eccentricity()
         i = self.inclination()
         a = self.SemiMajorAxis()
@@ -118,7 +117,7 @@ class KepElements():
 
         return np.array([e,i,a,W,w,f],dtype=object)
     
-    def RaanJ2(self,J2: float, R: float, a: float, e: float, i: float):
+    def RaanJ2(self,J2: float, R: float, a: float, e: float, i: float) -> np.float64:
         #
         # RaanJ2
         # 

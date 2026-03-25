@@ -17,10 +17,11 @@
 import numpy as np
 import math  as m 
 import matplotlib.pyplot as plt
+from .Utilities import Array
 
 class BiElliptic():
 
-    def Circular(Mu: float,Ri: float,Rf: float,Rb: float) -> np.array:
+    def Circular(Mu: float,Ri: float,Rf: float,Rb: float) -> Array:
         # Circular
         #
         # Inputs: 

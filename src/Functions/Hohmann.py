@@ -25,15 +25,16 @@
 
 # imports 
 import numpy as np
+from .Utilities import Array
 
 class Hohmann():
 
-    def __init__(self,r1,r2,Mu):
+    def __init__(self,r1: float,r2: float,Mu: float) -> None:
         self.r1 = r1
         self.r2 = r2
         self.Mu = Mu
 
-    def Circular(self):
+    def Circular(self) -> Array:
         dV1   = np.sqrt(self.Mu/self.r1) * (np.sqrt((2*self.r2)/(self.r1+self.r2)) - 1)
         dV2   = np.sqrt(self.Mu/self.r2) * (1 - np.sqrt((2*self.r1)/(self.r1+self.r2)))
         dVtot = dV1 + dV2
