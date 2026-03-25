@@ -6,7 +6,7 @@
 
 
 Sorren's Orbital Library: A Python Orbital Mechanics Library\
-A collection of scripts and programs I wrote during my time as an undergraduate at Arizona State University. Currently, this project is in no shape I would consider to be a useable library, it is my hope that it eventually gets there. But at the moment this is just a WIP side project I do to satisfy my own curiosity and as a learning exercise
+A collection of scripts and programs I wrote during my time as an undergraduate at Arizona State University. Currently, this project is in no shape I would consider to be a useable library, it is my hope that it eventually gets there. But at the moment this is just a WIP side project I do to satisfy my own curiosity and as a learning exercise as well as serve as a demonstration of technical ability. 
 
 
 **tldr: just use pykep or poliastro for anything serious**
