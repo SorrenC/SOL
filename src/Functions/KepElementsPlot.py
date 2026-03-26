@@ -31,11 +31,10 @@
 
 ### IMPORTS ####
 import numpy as np
-import math as m
 import matplotlib.pyplot as plt
 from numpy import sin as sin 
 from numpy import cos as cos
-from .Utilities import Array
+from Utilities import Array
 
 ### CLASS DEFINITIONS ###
 

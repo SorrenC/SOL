@@ -39,7 +39,7 @@ import math  as m
 
 class OrbitDetermine():
     
-    def __init__(self,rho1,rho2,rho3,t1,t2,t3,R_og,Mu);
+    def __init__(self,rho1,rho2,rho3,t1,t2,t3,R_og,Mu):
         self.rho1 = rho1
         self.rho2 = rho2
         self.rho3 = rho3

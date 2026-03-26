@@ -31,7 +31,6 @@
 #########################################################################################################
 
 # imports 
-import math
 import numpy as np
 from numpy.linalg import norm 
 from .Exceptions import BAD_INPUT, MAX_ITERATIONS_REACHED
@@ -74,7 +73,7 @@ class LambertsSolver():
             raise BAD_INPUT
         
         # Find semi-perimeter 
-        s = (c + norm(self.r1) + norm(self.r2))/2;
+        s = (c + norm(self.r1) + norm(self.r2))/2
 
         # need an initial guess for a and delta T
         a_min = s/2
@@ -133,7 +132,7 @@ class LambertsSolver():
             raise BAD_INPUT
         
         # # Find semi-perimeter 
-        s = (c + norm(self.r1) + norm(self.r2))/2;
+        s = (c + norm(self.r1) + norm(self.r2))/2
         
         print("test")
 

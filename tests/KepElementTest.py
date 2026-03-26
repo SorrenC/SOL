@@ -2,13 +2,13 @@
 import sys
 import os 
 import numpy as np
+from numpy.linalg import norm
 
 # Add the project root to sys.path and also put path at top of list so python searches this path first
 rootpath = sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 if rootpath not in sys.path:
     sys.path.insert(0,rootpath)
 
-from numpy.linalg import norm
 from src.Functions.KepElements import KepElements
 from src.Functions.PlanetConsts import SUN
 

@@ -1,10 +1,9 @@
 # imports 
 import sys
 sys.path += ['C:/Users/sorre/Desktop/Programs/SOL/src/Functions','C:/Users/sorre/Desktop/Programs/SOL/src/Constants']
-import math
 import numpy as np
 from numpy.linalg import norm 
-from Exceptions import *
+from Exceptions import BAD_INPUT, MAX_ITERATIONS_REACHED
 
 # Data
 r1        = [-1.591163034225527E+08,1.892356715610578E+08,7.870476085229695E+06]  # [km]
@@ -16,16 +15,16 @@ MaxInt    = 10000
 options   = 'vector'
 
  # check if supplied vectors are a list or a numpy array, convert to numpy array if not
-if isinstance(r1, np.ndarray)   == True:
+if isinstance(r1, np.ndarray):
     pass
-elif isinstance(r1, np.ndarray) == False:
+elif not isinstance(r1, np.ndarray):
     r1 = np.asarray(r1)
 else:
     raise BAD_INPUT
         
-if isinstance(r2, np.ndarray)   == True:
+if isinstance(r2, np.ndarray):
     pass
-elif isinstance(r2, np.ndarray) == False:
+elif not isinstance(r2, np.ndarray):
     r2 = np.asarray(r2)
 else:
     raise BAD_INPUT
@@ -40,7 +39,7 @@ else:
     raise BAD_INPUT
         
 # Find semi-perimeter 
-s = (c + norm(r1) + norm(r2))/2;
+s = (c + norm(r1) + norm(r2))/2
 
 # need an initial guess for a and delta T
 a_min = s/2

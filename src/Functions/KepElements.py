@@ -22,8 +22,8 @@
 import math  as m 
 import numpy as np
 from numpy.linalg import norm 
-from .Exceptions import BAD_INPUT
-from .Utilities import FloatArray64, Float64, Array
+from Exceptions import BAD_INPUT
+from Utilities import FloatArray64, Float64, Array
 
 
 ### Class Definition ###
@@ -89,7 +89,7 @@ class KepElements():
 
         # Need to check for quadrant ambiguity 
         if np.dot([0,0,1],e) < 0:
-            w = 360 - w; 
+            w = 360 - w 
         else: 
             pass # do nothing, in the correct quadrant 
         return w
@@ -101,7 +101,7 @@ class KepElements():
 
         #Need to check for quadrant ambiguity
         if np.dot(self.r,self.v) < 0:
-            f = 360 - f;
+            f = 360 - f
         else:
             pass  # do nothing, in the right quadrant 
         return f
