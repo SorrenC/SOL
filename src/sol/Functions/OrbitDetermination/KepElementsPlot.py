@@ -34,7 +34,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 from numpy import sin as sin 
 from numpy import cos as cos
-from Utilities import Array
+from sol.Functions.Utils.Utilities import Array
 
 ### CLASS DEFINITIONS ###
 
@@ -102,14 +102,4 @@ class KepElementPlot():
 
         ax.legend()
         plt.show()
-        
 
-## TEST DATA
-e=0
-i=40
-a=2294967.891
-W=50
-w=30
-f=150.814 
-
-Plot = KepElementPlot(i,a,e,W,w,f).KepPlot()

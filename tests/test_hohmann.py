@@ -1,15 +1,8 @@
 # Test/Example of how to use the Hohmann transfer orbit module 
 
-import sys
-import os 
-
-# Add the project root to sys.path and also put path at top of list so python searches this path first
-rootpath = sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-if rootpath not in sys.path:
-    sys.path.insert(0,rootpath)
-
-from src.Functions.Hohmann import Hohmann
-from src.Functions.PlanetConsts import EARTH_MU
+# Imports
+from sol.Functions.Maneuvers.Hohmann import Hohmann
+from sol.Functions.Constants.PlanetConsts import EARTH
 
 # Go from a circular orbit to another circualr orbit around Earth
 # R1 and R2 must be given as the orbital radius from the center of the body, NOT ALTITUDE!
@@ -18,7 +11,7 @@ from src.Functions.PlanetConsts import EARTH_MU
 # Example
 r1       = 6700.0         # [km]
 r2       = 93800.0        # [km]
-Mu_earth = EARTH_MU     # [km^3 / s^2]
+Mu_earth = EARTH.mu     # [km^3 / s^2]
 
 Hohmann = Hohmann(r1,r2,Mu_earth)
 results = Hohmann.Circular()

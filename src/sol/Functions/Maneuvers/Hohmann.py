@@ -25,7 +25,7 @@
 
 # imports 
 import numpy as np
-from .Utilities import Array
+from sol.Functions.Utils.Utilities import Array
 
 class Hohmann():
 

@@ -22,8 +22,8 @@
 import math  as m 
 import numpy as np
 from numpy.linalg import norm 
-from Exceptions import BAD_INPUT
-from Utilities import FloatArray64, Float64, Array
+from sol.Functions.Utils.CustomExceptions import BAD_INPUT
+from sol.Functions.Utils.Utilities import  Float64, Array
 
 
 ### Class Definition ###

@@ -17,7 +17,7 @@
 import numpy as np
 import math  as m 
 import matplotlib.pyplot as plt
-from .Utilities import Array
+from sol.Functions.Utils.Utilities import Array
 
 class BiElliptic():
 

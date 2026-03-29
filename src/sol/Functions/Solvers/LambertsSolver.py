@@ -33,7 +33,7 @@
 # imports 
 import numpy as np
 from numpy.linalg import norm 
-from .Exceptions import BAD_INPUT, MAX_ITERATIONS_REACHED
+from sol.Functions.Utils.CustomExceptions import BAD_INPUT, MAX_ITERATIONS_REACHED
 
 class LambertsSolver():
 
@@ -133,6 +133,6 @@ class LambertsSolver():
         
         # # Find semi-perimeter 
         s = (c + norm(self.r1) + norm(self.r2))/2
-        
+        print(s) # just print this for now so the IDE stops yelling at me that this is an unsued variable
         print("test")
 

@@ -1,9 +1,8 @@
 # imports 
-import sys
-sys.path += ['C:/Users/sorre/Desktop/Programs/SOL/src/Functions','C:/Users/sorre/Desktop/Programs/SOL/src/Constants']
+
 import numpy as np
 from numpy.linalg import norm 
-from Exceptions import BAD_INPUT, MAX_ITERATIONS_REACHED
+from sol.Functions.Utils.CustomExceptions import BAD_INPUT, MAX_ITERATIONS_REACHED
 
 # Data
 r1        = [-1.591163034225527E+08,1.892356715610578E+08,7.870476085229695E+06]  # [km]

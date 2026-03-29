@@ -7,3 +7,12 @@ __pycache__/
 
 # vscode settings
 .vscode/
+
+# ruff cache
+.ruff_cache/
+
+# Distribution / packaging
+*.egg-info/
+
+# OS specific 
+.DS_Store

@@ -1,16 +1,9 @@
 # Test/Examples of how to use the BiElliptic transfer orbit module 
 
-import sys
-import os
+# imports
 import numpy as np
-# Add the project root to sys.path and also put path at top of list so python searches this path first
-rootpath = sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-if rootpath not in sys.path:
-    sys.path.insert(0,rootpath)
-
-from src.Functions.BiElliptic import BiElliptic
-from src.Functions.PlanetConsts import EARTH_MU
-
+from sol.Functions.Maneuvers.BiElliptic import BiElliptic
+from sol.Functions.Constants.PlanetConsts import EARTH
 
 # Go from a circular orbit to another circualr orbit around Earth
 # R1 and R2 must be given as the orbital radius from the center of the body, NOT ALTITUDE!
@@ -18,7 +11,7 @@ from src.Functions.PlanetConsts import EARTH_MU
 
 # Example
 # Test case : Object in low earth orbit to high earth orbit. Test case presented in wikipedia article for bi-elliptic transfers
-Mu = EARTH_MU
+Mu = EARTH.mu
 Ri = 6700
 Rf = 93800
 Rb = 40*(Ri)

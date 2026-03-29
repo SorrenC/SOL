@@ -1,16 +1,9 @@
-import sys
-import os 
+# Imports 
+
 from numpy.linalg import norm
-
-
-# Add the project root to sys.path and also put path at top of list so python searches this path first
-rootpath = sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
-if rootpath not in sys.path:
-    sys.path.insert(0,rootpath)
-
-from src.Functions.LambertsSolver import LambertsSolver
-from src.Functions.KepElements import KepElements
-from src.Functions.PlanetConsts import SUN 
+from sol.Functions.Solvers.LambertsSolver import LambertsSolver
+from sol.Functions.OrbitDetermination.KepElements import KepElements
+from sol.Functions.Constants.PlanetConsts import SUN 
 
 
 # Example of using the lamberts solver function to obtain state vectors v1 and v2 from intial 
