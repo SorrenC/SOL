@@ -78,8 +78,8 @@ EARTH = OrbtialBody(
         Name = "Earth",
         mass = 5.97224e+24,
         radius_mean = 6371,
-        radius_equitorial = None,
-        radius_polar = None,
+        radius_equitorial = 6378.137,
+        radius_polar = 6356.752,
         mu = 3.986e+5,
         j2 = 1082.63e-6,
         j3 = None,
@@ -151,4 +151,3 @@ NEPTURE = OrbtialBody(
         j4 = None,
         j5 = None
 )
-

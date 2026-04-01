@@ -62,7 +62,7 @@ class KepElements():
 
     # Orbital inclination
     def inclination(self) -> Float64:
-        i = (np.arccos(np.dot((self.h/norm(self.h)),np.array([0,0,1])))) * (180/m.pi)     # find orbital inclination, and convert to degrees
+        i = (np.arccos(np.dot((self.h/norm(self.h)),np.array([0,0,1]))))     # find orbital inclination. This is in radians
         return i 
 
     # Semi major axis
